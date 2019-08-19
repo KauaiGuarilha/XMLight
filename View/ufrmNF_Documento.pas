@@ -88,11 +88,14 @@ type
     Label28: TLabel;
     Label29: TLabel;
     Image3: TImage;
+    lblHora: TLabel;
+    Timer1: TTimer;
     procedure Image1Click(Sender: TObject);
     procedure DBGProdutoCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     FNodeInfProd: IXMLNode;
     FTOTAL_ICMSTOT_Doc : TTOTAL_ICMSTOT_Doc;
@@ -201,6 +204,11 @@ begin
   self.edtvOutro.Text := FTOTAL_ICMSTOT_Doc.TVOutro;
   self.edtvNF.Text := FTOTAL_ICMSTOT_Doc.TVNF;
   self.edtvTotTribF.Text := FTOTAL_ICMSTOT_Doc.TVTotTrib;
+end;
+
+procedure TfrmNF_Documento.Timer1Timer(Sender: TObject);
+begin
+  lblHora.Caption := timeToStr(time);
 end;
 
 procedure TfrmNF_Documento.acharTotTrib;

@@ -377,7 +377,7 @@ object frmNF_Documento: TfrmNF_Documento
     end
     object Label25: TLabel
       Left = 838
-      Top = 594
+      Top = 586
       Width = 68
       Height = 21
       Caption = 'Localizar'
@@ -391,9 +391,9 @@ object frmNF_Documento: TfrmNF_Documento
     object Label26: TLabel
       Left = 30
       Top = 672
-      Width = 175
+      Width = 215
       Height = 15
-      Caption = 'Desenvolvido por: Kauai Guarilha'
+      Caption = 'Desenvolvido por : Kauai Guarilha Freitas'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -12
@@ -512,6 +512,19 @@ object frmNF_Documento: TfrmNF_Documento
         4ECBE8F0A18B0139217986790FB4BBF53DA0DF056E9B309836B87E980C19F817
         ED374307A530B4EF906F0000000049454E44AE426082}
       OnClick = Image3Click
+    end
+    object lblHora: TLabel
+      Left = 862
+      Top = 673
+      Width = 65
+      Height = 22
+      Caption = 'lblHora'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object DBGProduto: TDBGrid
       Left = 6
@@ -792,5 +805,10 @@ object frmNF_Documento: TfrmNF_Documento
       FieldName = 'indTot'
       Size = 2
     end
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 752
+    Top = 64
   end
 end
