@@ -90,12 +90,17 @@ type
     Image3: TImage;
     lblHora: TLabel;
     Timer1: TTimer;
+    lbldata: TLabel;
+    Image4: TImage;
+    Image5: TImage;
     procedure Image1Click(Sender: TObject);
     procedure DBGProdutoCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
   private
     FNodeInfProd: IXMLNode;
     FTOTAL_ICMSTOT_Doc : TTOTAL_ICMSTOT_Doc;
@@ -209,6 +214,7 @@ end;
 procedure TfrmNF_Documento.Timer1Timer(Sender: TObject);
 begin
   lblHora.Caption := timeToStr(time);
+  lblData.Caption := DateToStr(date);
 end;
 
 procedure TfrmNF_Documento.acharTotTrib;
@@ -253,6 +259,16 @@ begin
   except on E: Exception do
     ShowMessage('Não foi possível acessar o Site da Receita Federal');
   end;
+end;
+
+procedure TfrmNF_Documento.Image4Click(Sender: TObject);
+begin
+  ShowMessage('Soma do total dos itens (vTotTrib)');
+end;
+
+procedure TfrmNF_Documento.Image5Click(Sender: TObject);
+begin
+  ShowMessage('Soma do total do Documento (vTotTrib)');
 end;
 
 procedure TfrmNF_Documento.ClearInf;

@@ -2,7 +2,7 @@ object frmNF_Documento: TfrmNF_Documento
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'XMLight |  XML P/V.: 4.00 | Documento NF-e'
+  Caption = 'XMLight 1.0 |  XML P/V.: 4.00 | Documento NF-e'
   ClientHeight = 695
   ClientWidth = 945
   Color = clBtnFace
@@ -51,9 +51,15 @@ object frmNF_Documento: TfrmNF_Documento
     object blbvTotTrib: TLabel
       Left = 376
       Top = 356
-      Width = 85
+      Width = 89
       Height = 13
       Caption = 'Soma <vTotTrib>'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
     object Label4: TLabel
       Left = 14
@@ -449,11 +455,11 @@ object frmNF_Documento: TfrmNF_Documento
       OnClick = Image2Click
     end
     object Label28: TLabel
-      Left = 749
+      Left = 745
       Top = 38
-      Width = 73
+      Width = 79
       Height = 13
-      Caption = 'Portal da NF-e'
+      Caption = 'Portal da SEFAZ'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -514,10 +520,10 @@ object frmNF_Documento: TfrmNF_Documento
       OnClick = Image3Click
     end
     object lblHora: TLabel
-      Left = 862
-      Top = 673
-      Width = 65
-      Height = 22
+      Left = 853
+      Top = 657
+      Width = 38
+      Height = 13
       Caption = 'lblHora'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -525,6 +531,59 @@ object frmNF_Documento: TfrmNF_Documento
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+    end
+    object lbldata: TLabel
+      Left = 847
+      Top = 673
+      Width = 36
+      Height = 13
+      Caption = 'lbldata'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Segoe UI Semibold'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Image4: TImage
+      Left = 546
+      Top = 345
+      Width = 31
+      Height = 24
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000190000
+        00190806000000C4E9856300000006624B474400FF00FF00FFA0BDA793000000
+        FC4944415478DA6364A003601CB584644BFEFFFFAF0AA40C6860FE054646C6DB
+        304B0A80543F0D2C29045A3201DD123F207E4605C3A58078132E4B1481820F70
+        E904AAE30552CA407C17A8EE331E750A40EA3EB9967800A9ED40EC0954B78356
+        964803295720DE0D54F7945696B000291E20FE0254F7674807D7A82523D412AA
+        E4F818207E89A47E1F50D13FA0BC20906DCC403C1007E225B82C41079C40AC06
+        C4EBA03E2015A0582207350C0692813802889380783210FF066290439E9268C9
+        2DA0258FB0D68C404BDB815405947B1A8883808A9F90E113302064C95A204E00
+        5AF0855C0BF059D204A49E000D9F4589E1842CE1035AF0891A16800000B597E6
+        1A1D81BCF50000000049454E44AE426082}
+      OnClick = Image4Click
+    end
+    object Image5: TImage
+      Left = 764
+      Top = 486
+      Width = 31
+      Height = 26
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000190000
+        00190806000000C4E9856300000006624B474400FF00FF00FFA0BDA793000000
+        FC4944415478DA6364A003601CB584644BFEFFFFAF0AA40C6860FE054646C6DB
+        304B0A80543F0D2C29045A3201DD123F207E4605C3A58078132E4B1481820F70
+        E904AAE30552CA407C17A8EE331E750A40EA3EB9967800A9ED40EC0954B78356
+        964803295720DE0D54F7945696B000291E20FE0254F7674807D7A82523D412AA
+        E4F818207E89A47E1F50D13FA0BC20906DCC403C1007E225B82C41079C40AC06
+        C4EBA03E2015A0582207350C0692813802889380783210FF066290439E9268C9
+        2DA0258FB0D68C404BDB815405947B1A8883808A9F90E113302064C95A204E00
+        5AF0855C0BF059D204A49E000D9F4589E1842CE1035AF0891A16800000B597E6
+        1A1D81BCF50000000049454E44AE426082}
+      OnClick = Image5Click
     end
     object DBGProduto: TDBGrid
       Left = 6
@@ -723,7 +782,7 @@ object frmNF_Documento: TfrmNF_Documento
     end
   end
   object OpenDialog1: TOpenDialog
-    Left = 552
+    Left = 560
     Top = 64
   end
   object XMLDocument1: TXMLDocument
@@ -739,7 +798,7 @@ object frmNF_Documento: TfrmNF_Documento
     Aggregates = <>
     Params = <>
     Left = 496
-    Top = 60
+    Top = 68
     object cdsProdutocProd: TStringField
       FieldName = 'cProd'
       Size = 10
@@ -807,6 +866,7 @@ object frmNF_Documento: TfrmNF_Documento
     end
   end
   object Timer1: TTimer
+    Interval = 100
     OnTimer = Timer1Timer
     Left = 752
     Top = 64
