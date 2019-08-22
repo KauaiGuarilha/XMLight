@@ -92,6 +92,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Model\TOTAL_ICMSTOT_Doc.pas"/>
+        <DCCReference Include="Model\DET_PROD_ITEM_Doc.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

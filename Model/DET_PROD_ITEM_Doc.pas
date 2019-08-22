@@ -90,147 +90,188 @@ end;
 
 function TDET_PROD_ITEM_Doc.getCEAN: String;
 begin
-
+  result := cEAN;
 end;
 
 function TDET_PROD_ITEM_Doc.getCEANTrib: String;
 begin
-
+  result := cEANTrib;
 end;
 
 function TDET_PROD_ITEM_Doc.getCFOP: String;
 begin
-
+  result := CFOP;
 end;
 
 function TDET_PROD_ITEM_Doc.getCProd: String;
 begin
-
+  result := cProd;
 end;
 
 function TDET_PROD_ITEM_Doc.getIndTot: String;
 begin
-
+  result := indTot;
 end;
 
 function TDET_PROD_ITEM_Doc.getNCM: String;
 begin
-
+  result := NCM;
 end;
 
 function TDET_PROD_ITEM_Doc.getQCom: String;
 begin
-
+  result := qCom;
 end;
 
 function TDET_PROD_ITEM_Doc.getQTrib: String;
 begin
-
+  result := qTrib;
 end;
 
 function TDET_PROD_ITEM_Doc.getUCom: String;
 begin
-
+  result := uCom;
 end;
 
 function TDET_PROD_ITEM_Doc.getUTrib: String;
 begin
-
+  result := uTrib;
 end;
 
 function TDET_PROD_ITEM_Doc.getVProd: String;
 begin
-
+  result := vProd;
 end;
 
 function TDET_PROD_ITEM_Doc.getVUnCom: String;
 begin
-
+  result := vUnCom;
 end;
 
 function TDET_PROD_ITEM_Doc.getVUnTrib: String;
 begin
-
+  result := vUnTrib;
 end;
 
 function TDET_PROD_ITEM_Doc.getXProd: String;
 begin
-
+  result := xProd;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setCEAN(const Value: String);
 begin
-
+  cEAN := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setCEANTrib(const Value: String);
 begin
-
+  cEANTrib := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setCFOP(const Value: String);
 begin
-
+  CFOP := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setCProd(const Value: String);
 begin
-
+  cProd := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setIndTot(const Value: String);
 begin
-
+  indTot := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setNCM(const Value: String);
 begin
-
+  NCM := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setQCom(const Value: String);
 begin
-
+  qCom := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setQTrib(const Value: String);
 begin
-
+  qTrib := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setUCom(const Value: String);
 begin
-
+  uCom := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setUTrib(const Value: String);
 begin
-
+  uTrib := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setVProd(const Value: String);
 begin
-
+  vProd := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setVUnCom(const Value: String);
 begin
-
+  vUnCom := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setVUnTrib(const Value: String);
 begin
-
+  vUnTrib := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.setXProd(const Value: String);
 begin
-
+  xProd := Value;
 end;
 
 procedure TDET_PROD_ITEM_Doc.PreencherDetProd;
 begin
+if Assigned(FNodeProd) then
+  begin
+    if FNodeProd.ChildNodes.FindNode('cProd') <> nil then
+        cProd := FNodeProd.ChildNodes.FindNode('cProd').Text;
 
+    if FNodeProd.ChildNodes.FindNode('cEAN') <> nil then
+        cEAN := FNodeProd.ChildNodes.FindNode('cEAN').Text;
+
+    if FNodeProd.ChildNodes.FindNode('xProd') <> nil then
+        xProd := FNodeProd.ChildNodes.FindNode('xProd').Text;
+
+    if FNodeProd.ChildNodes.FindNode('NCM') <> nil then
+        NCM := FNodeProd.ChildNodes.FindNode('NCM').Text;
+
+    if FNodeProd.ChildNodes.FindNode('CFOP') <> nil then
+        CFOP := FNodeProd.ChildNodes.FindNode('CFOP').Text;
+
+    if FNodeProd.ChildNodes.FindNode('uCom') <> nil then
+        uCom := FNodeProd.ChildNodes.FindNode('uCom').Text;
+
+    if FNodeProd.ChildNodes.FindNode('qCom') <> nil then
+        qCom := FNodeProd.ChildNodes.FindNode('qCom').Text;
+
+    if FNodeProd.ChildNodes.FindNode('vUnCom') <> nil then
+        vUnCom := FNodeProd.ChildNodes.FindNode('vUnCom').Text;
+
+    if FNodeProd.ChildNodes.FindNode('vProd') <> nil then
+        vProd := FNodeProd.ChildNodes.FindNode('vProd').Text;
+
+    if FNodeProd.ChildNodes.FindNode('cEANTrib') <> nil then
+        cEANTrib := FNodeProd.ChildNodes.FindNode('cEANTrib').Text;
+
+    if FNodeProd.ChildNodes.FindNode('uTrib') <> nil then
+        uTrib := FNodeProd.ChildNodes.FindNode('uTrib').Text;
+
+    if FNodeProd.ChildNodes.FindNode('vUnTrib') <> nil then
+        vUnTrib := FNodeProd.ChildNodes.FindNode('vUnTrib').Text;
+
+    if FNodeProd.ChildNodes.FindNode('indTot') <> nil then
+        indTot := FNodeProd.ChildNodes.FindNode('indTot').Text;
+
+   end;
 end;
 
 end.
