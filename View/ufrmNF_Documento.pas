@@ -101,6 +101,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Image4Click(Sender: TObject);
     procedure Image5Click(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     FNodeInfProd: IXMLNode;
     FTOTAL_ICMSTOT_Doc : TTOTAL_ICMSTOT_Doc;
@@ -122,6 +123,11 @@ implementation
 procedure TfrmNF_Documento.FormCreate(Sender: TObject);
 begin
   FTOTAL_ICMSTOT_Doc := TTOTAL_ICMSTOT_Doc.Create_TTOTAL_ICMSTOT_Doc;
+end;
+
+procedure TfrmNF_Documento.FormDestroy(Sender: TObject);
+begin
+  FTOTAL_ICMSTOT_Doc.Free;
 end;
 
 procedure TfrmNF_Documento.Image1Click(Sender: TObject);
