@@ -2,8 +2,9 @@ object frmNF_Documento: TfrmNF_Documento
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'XMLight 1.0 |  XML P/V.: 4.00 | Documento NF-e'
-  ClientHeight = 695
+  ClientHeight = 697
   ClientWidth = 945
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
