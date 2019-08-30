@@ -853,7 +853,7 @@ object frmNF_Documento: TfrmNF_Documento
     Top = 68
     object cdsProdutocProd: TStringField
       FieldName = 'cProd'
-      Size = 10
+      Size = 13
     end
     object cdsProdutoEAN: TStringField
       FieldName = 'EAN'
@@ -877,7 +877,7 @@ object frmNF_Documento: TfrmNF_Documento
     end
     object cdsProdutouCom: TStringField
       FieldName = 'uCom'
-      Size = 2
+      Size = 4
     end
     object cdsProdutoqCom: TStringField
       FieldName = 'qCom'
@@ -902,7 +902,7 @@ object frmNF_Documento: TfrmNF_Documento
     end
     object cdsProdutouTrib: TStringField
       FieldName = 'uTrib'
-      Size = 2
+      Size = 4
     end
     object cdsProdutoqTrib: TStringField
       FieldName = 'qTrib'
