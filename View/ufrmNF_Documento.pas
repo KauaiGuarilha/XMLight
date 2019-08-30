@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Xml.xmldom, Xml.XMLIntf,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Datasnap.DBClient, Xml.XMLDoc,
-  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, TOTAL_ICMSTOT_Doc, ShellAPI;
+  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, TOTAL_ICMSTOT_Doc, ShellAPI,
+  Vcl.Imaging.GIFImg;
 
 type
   TfrmNF_Documento = class(TForm)
@@ -93,6 +94,8 @@ type
     lbldata: TLabel;
     Image4: TImage;
     Image5: TImage;
+    Label30: TLabel;
+    Image6: TImage;
     procedure Image1Click(Sender: TObject);
     procedure DBGProdutoCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
@@ -102,6 +105,10 @@ type
     procedure Image4Click(Sender: TObject);
     procedure Image5Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure DBGProdutoKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure DBGProdutoTitleClick(Column: TColumn);
+    procedure Image6Click(Sender: TObject);
   private
     FNodeInfProd: IXMLNode;
     FTOTAL_ICMSTOT_Doc : TTOTAL_ICMSTOT_Doc;
@@ -217,12 +224,6 @@ begin
   self.edtvTotTribF.Text := FTOTAL_ICMSTOT_Doc.TVTotTrib;
 end;
 
-procedure TfrmNF_Documento.Timer1Timer(Sender: TObject);
-begin
-  lblHora.Caption := timeToStr(time);
-  lblData.Caption := DateToStr(date);
-end;
-
 procedure TfrmNF_Documento.acharTotTrib;
 var somar : Double;
 begin
@@ -243,12 +244,6 @@ inherited;
   end;
 end;
 
-procedure TfrmNF_Documento.DBGProdutoCellClick(Column: TColumn);
-begin
-  MemoXmlProd.Lines.Clear;
-  MemoXmlProd.Lines.Text := cdsProdutoTagICMS.AsString;
-end;
-
 procedure TfrmNF_Documento.Image2Click(Sender: TObject);
 begin
   try
@@ -261,10 +256,38 @@ end;
 procedure TfrmNF_Documento.Image3Click(Sender: TObject);
 begin
   try
-    ShellExecute(Handle, 'open', 'https://cav.receita.fazenda.gov.br/autenticacao/login', '', nil,0);
+    ShellExecute(Handle, 'open', 'iexplore.exe', 'https://cav.receita.fazenda.gov.br/autenticacao/login', nil,0);
+   // ShellExecute(Handle, 'open', 'https://cav.receita.fazenda.gov.br/autenticacao/login', '', nil,0);
   except on E: Exception do
     ShowMessage('Não foi possível acessar o Site da Receita Federal');
   end;
+end;
+
+procedure TfrmNF_Documento.Image6Click(Sender: TObject);
+begin
+  try
+    ShellExecute(Handle, 'open', 'https://www.sefaz.rs.gov.br/NFE/NFE-VAL.aspx', '', nil,0);
+  except on E: Exception do
+    ShowMessage('Não foi possível acessar o Site da SEFAZ');
+  end;
+end;
+
+procedure TfrmNF_Documento.ClearInf;
+begin
+  cdsProduto.Close;
+  MemoXmlProd.Lines.Clear;
+end;
+
+procedure TfrmNF_Documento.DBGProdutoCellClick(Column: TColumn);
+begin
+  MemoXmlProd.Lines.Clear;
+  MemoXmlProd.Lines.Text := cdsProdutoTagICMS.AsString;
+end;
+
+procedure TfrmNF_Documento.DBGProdutoKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  MemoXmlProd.Lines.Clear;
+  MemoXmlProd.Lines.Text := cdsProdutoTagICMS.AsString;
 end;
 
 procedure TfrmNF_Documento.Image4Click(Sender: TObject);
@@ -277,10 +300,15 @@ begin
   ShowMessage('Soma do total do Documento (vTotTrib)');
 end;
 
-procedure TfrmNF_Documento.ClearInf;
+procedure TfrmNF_Documento.DBGProdutoTitleClick(Column: TColumn);
 begin
-  cdsProduto.Close;
-  MemoXmlProd.Lines.Clear;
+  cdsProduto.IndexFieldNames := column.FieldName;
+end;
+
+procedure TfrmNF_Documento.Timer1Timer(Sender: TObject);
+begin
+  lblHora.Caption := timeToStr(time);
+  lblData.Caption := DateToStr(date);
 end;
 
 end.

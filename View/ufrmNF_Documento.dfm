@@ -3,7 +3,9 @@ object frmNF_Documento: TfrmNF_Documento
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'XMLight 1.0 |  XML P/V.: 4.00 | Documento NF-e'
+  Caption = 
+    'XMLight 1.0 |  XML P/V.: 4.00 | Documento NF-e | Desenvolvido po' +
+    'r : Kauai Guarilha Freitas'
   ClientHeight = 697
   ClientWidth = 945
   Color = clBtnFace
@@ -25,8 +27,8 @@ object frmNF_Documento: TfrmNF_Documento
     Height = 697
     TabOrder = 0
     object Label1: TLabel
-      Left = 6
-      Top = 34
+      Left = 5
+      Top = 29
       Width = 205
       Height = 17
       Caption = 'Informa'#231#227'o Produto <det nItem>'
@@ -39,7 +41,7 @@ object frmNF_Documento: TfrmNF_Documento
     end
     object Label2: TLabel
       Left = 6
-      Top = 361
+      Top = 356
       Width = 141
       Height = 17
       Caption = 'Informa'#231#227'o <imposto>'
@@ -51,7 +53,7 @@ object frmNF_Documento: TfrmNF_Documento
       ParentFont = False
     end
     object blbvTotTrib: TLabel
-      Left = 376
+      Left = 378
       Top = 356
       Width = 89
       Height = 13
@@ -64,11 +66,11 @@ object frmNF_Documento: TfrmNF_Documento
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 14
+      Left = 6
       Top = 471
-      Width = 29
+      Width = 124
       Height = 17
-      Caption = 'Total'
+      Caption = 'Total do Documento'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -77,7 +79,7 @@ object frmNF_Documento: TfrmNF_Documento
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 49
+      Left = 133
       Top = 471
       Width = 68
       Height = 17
@@ -355,6 +357,7 @@ object frmNF_Documento: TfrmNF_Documento
       Width = 89
       Height = 94
       Cursor = crHandPoint
+      Center = True
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000600000
         00600806000000E298773800000006624B474400FF00FF00FFA0BDA793000002
@@ -384,7 +387,7 @@ object frmNF_Documento: TfrmNF_Documento
       OnClick = Image1Click
     end
     object Label25: TLabel
-      Left = 838
+      Left = 835
       Top = 586
       Width = 68
       Height = 21
@@ -397,8 +400,8 @@ object frmNF_Documento: TfrmNF_Documento
       ParentFont = False
     end
     object Label26: TLabel
-      Left = 30
-      Top = 672
+      Left = 425
+      Top = 656
       Width = 215
       Height = 15
       Caption = 'Desenvolvido por : Kauai Guarilha Freitas'
@@ -408,10 +411,11 @@ object frmNF_Documento: TfrmNF_Documento
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold]
       ParentFont = False
+      Visible = False
     end
     object Label27: TLabel
-      Left = 234
-      Top = 33
+      Left = 6
+      Top = 654
       Width = 102
       Height = 17
       Caption = 'Chave de Acesso'
@@ -522,7 +526,7 @@ object frmNF_Documento: TfrmNF_Documento
       OnClick = Image3Click
     end
     object lblHora: TLabel
-      Left = 853
+      Left = 855
       Top = 657
       Width = 38
       Height = 13
@@ -535,7 +539,7 @@ object frmNF_Documento: TfrmNF_Documento
       ParentFont = False
     end
     object lbldata: TLabel
-      Left = 847
+      Left = 842
       Top = 673
       Width = 36
       Height = 13
@@ -551,7 +555,7 @@ object frmNF_Documento: TfrmNF_Documento
       Left = 546
       Top = 345
       Width = 31
-      Height = 24
+      Height = 33
       Cursor = crHandPoint
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000190000
@@ -587,6 +591,44 @@ object frmNF_Documento: TfrmNF_Documento
         1A1D81BCF50000000049454E44AE426082}
       OnClick = Image5Click
     end
+    object Label30: TLabel
+      Left = 665
+      Top = 38
+      Width = 46
+      Height = 13
+      Caption = 'SEFAZ RS'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Image6: TImage
+      Left = 671
+      Top = 3
+      Width = 32
+      Height = 33
+      Cursor = crHandPoint
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+        00200806000000737A7AF400000006624B474400FF00FF00FFA0BDA793000001
+        9C4944415478DAED963D4BC35014405F062D38581C5C44C549506A17BFC0B5E8
+        A48808DAC1C5454570757110171767BFFE8088DA527472A9A383745029BA8908
+        2E0A1607B18AE879245348C823E49A25170E37F4F6DE77782F4D63A998C34A04
+        FC0ABF4488791518B52CEB2D2E011D379043E235120106191D934BD878272404
+        AE60D0742724045AE01C864C242217D0DFE732ED480C074948DD03EEA8306620
+        4E01DF399109849D93082402FF213042BAF37B2C8B0B0485A800233A486B300E
+        4DF00167B0C9D8275101DA73A402A43DCA35986674594480D62ED23534C3016C
+        C123E8CF57210FEFD02725B04F5A8023DA673DEA277A0760574A409F6F3BF4D0
+        7EEF51EF2555F5AE4809D4498D90A2FDCBA39E227D425D4A409F77276468AF7A
+        D4B3CABE471EA404F6488B704CFB8C47BD489A821D29817ED22534400936947D
+        E61958874965FF0AB251BD96FFC01CAE87B4B5725D7616FB7624DC61FE1C3008
+        BD489E61455ADAB8BE806E65BF1DCFC30A4C80AE3DC3A932791286D876F7E263
+        2C520BEA8B526099B40DB7CA7E0B7E31E98BF49F0E892552C174711D7FF9F51F
+        398FA436D80000000049454E44AE426082}
+      OnClick = Image6Click
+    end
     object DBGProduto: TDBGrid
       Left = 6
       Top = 57
@@ -601,6 +643,8 @@ object frmNF_Documento: TfrmNF_Documento
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
       OnCellClick = DBGProdutoCellClick
+      OnKeyUp = DBGProdutoKeyUp
+      OnTitleClick = DBGProdutoTitleClick
     end
     object MemoXmlProd: TMemo
       Left = 6
@@ -608,10 +652,11 @@ object frmNF_Documento: TfrmNF_Documento
       Width = 931
       Height = 81
       ReadOnly = True
+      ScrollBars = ssVertical
       TabOrder = 1
     end
     object edtvTotTrib: TEdit
-      Left = 467
+      Left = 471
       Top = 351
       Width = 73
       Height = 21
@@ -623,6 +668,8 @@ object frmNF_Documento: TfrmNF_Documento
       Top = 517
       Width = 103
       Height = 21
+      BiDiMode = bdLeftToRight
+      ParentBiDiMode = False
       ReadOnly = True
       TabOrder = 3
     end
@@ -695,6 +742,7 @@ object frmNF_Documento: TfrmNF_Documento
       Top = 567
       Width = 109
       Height = 21
+      ReadOnly = True
       TabOrder = 12
     end
     object edtvProd: TEdit
@@ -733,6 +781,7 @@ object frmNF_Documento: TfrmNF_Documento
       Top = 617
       Width = 109
       Height = 21
+      ReadOnly = True
       TabOrder = 17
     end
     object edtvDesc: TEdit
@@ -740,6 +789,7 @@ object frmNF_Documento: TfrmNF_Documento
       Top = 517
       Width = 109
       Height = 21
+      ReadOnly = True
       TabOrder = 18
     end
     object edtvIPI: TEdit
@@ -775,8 +825,8 @@ object frmNF_Documento: TfrmNF_Documento
       TabOrder = 22
     end
     object edtChave: TEdit
-      Left = 342
-      Top = 30
+      Left = 113
+      Top = 654
       Width = 292
       Height = 21
       ReadOnly = True
