@@ -605,7 +605,7 @@ object frmNF_Documento: TfrmNF_Documento
       ParentFont = False
     end
     object Image6: TImage
-      Left = 671
+      Left = 670
       Top = 3
       Width = 32
       Height = 33
