@@ -117,6 +117,7 @@ type
     procedure PreencherTotICMS;
     procedure acharTotTrib;
     procedure ClearInf;
+    procedure ClearEdts;
     property NodeInfProd : IXMLNode read FNodeInfProd write FNodeInfProd;
   end;
 
@@ -141,14 +142,16 @@ procedure TfrmNF_Documento.Image1Click(Sender: TObject);
 begin
   try
     ClearInf;
+    ClearEdts;
     OpenDialog1.Execute;
     XMLDocument1.LoadFromFile(OpenDialog1.FileName);
 
-    PreencherDBGProd;
     PreencherTotICMS;
     acharTotTrib;
+    PreencherDBGProd;
+
   except on E: Exception do
-    ShowMessage('Nenhum Documento Selecionado!');
+    ShowMessage('Estrutura incorreta do XML, Verifique os cadastros!');
   end;
 end;
 
@@ -185,7 +188,17 @@ begin
     cdsProdutoTagICMS.AsString  := lNodeDet.ChildNodes.FindNode('imposto').XML;
 
     lNodeImp := lNodeDet.ChildNodes.FindNode('imposto');
-    cdsProdutovTotTrib.AsFloat := lNodeImp.ChildNodes.FindNode('vTotTrib').NodeValue/100;
+
+    if lNodeImp.ChildNodes.FindNode('vTotTrib').NodeValue = null then
+    begin
+      ShowMessage('Produto não está tributado. Verifique o cadastro');
+      cdsProduto.Post;
+      lNodeDet := lNodeDet.NextSibling;
+    end
+      else
+      begin
+        cdsProdutovTotTrib.AsFloat := lNodeImp.ChildNodes.FindNode('vTotTrib').NodeValue/100;
+      end;
 
     cdsProduto.Post;
     lNodeDet := lNodeDet.NextSibling;
@@ -236,8 +249,18 @@ inherited;
 
     while not cdsProduto.Eof do
     begin
-      somar := (somar + cdsProduto.FieldByName('vTotTrib').AsFloat);
-      cdsProduto.Next;
+      if cdsProduto.FieldByName('vTotTrib').AsFloat = null then
+      begin
+        somar := (somar + cdsProduto.FieldByName('vTotTrib').AsFloat);
+        cdsProduto.Next;
+
+      end
+        else
+        begin
+          somar := (somar + cdsProduto.FieldByName('vTotTrib').AsFloat);
+          cdsProduto.Next;
+        end;
+
     end;
     cdsProduto.EnableControls;
     self.edtvTotTrib.Text := FloatToStr(somar);
@@ -270,6 +293,33 @@ begin
   except on E: Exception do
     ShowMessage('Não foi possível acessar o Site da SEFAZ');
   end;
+end;
+
+procedure TfrmNF_Documento.ClearEdts;
+begin
+  self.edtvBC.Text := '';
+  self.edtvICMS.Text := '';
+  self.edtvICMSDeson.Text := '';
+  self.edtvFCP.Text := '';
+  self.edtvBCST.Text := '';
+  self.edtvST.Text := '';
+  self.edtvFCPST.Text := '';
+  self.edtvFCPSTRet.Text := '';
+  self.edtvProd.Text := '';
+  self.edtvFrete.Text := '';
+  self.edtvSeg.Text := '';
+  self.edtvDesc.Text := '';
+  self.edtvII.Text := '';
+  self.edtvIPI.Text := '';
+  self.edtvIPIDevol.Text := '';
+  self.edtvPIS.Text := '';
+  self.edtvCOFINS.Text := '';
+  self.edtvOutro.Text := '';
+  self.edtvNF.Text := '';
+  self.edtvTotTribF.Text := '';
+
+  self.edtChave.Text := '';
+  self.edtvTotTrib.Text := '';
 end;
 
 procedure TfrmNF_Documento.ClearInf;

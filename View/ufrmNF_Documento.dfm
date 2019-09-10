@@ -850,7 +850,7 @@ object frmNF_Documento: TfrmNF_Documento
     Aggregates = <>
     Params = <>
     Left = 496
-    Top = 68
+    Top = 60
     object cdsProdutocProd: TStringField
       FieldName = 'cProd'
       Size = 13
