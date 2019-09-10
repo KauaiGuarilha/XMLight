@@ -13,6 +13,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.Title := 'Informação !';
   TStyleManager.TrySetStyle('Carbon');
   Application.CreateForm(TfrmNF_Documento, frmNF_Documento);
   Application.Run;

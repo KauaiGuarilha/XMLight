@@ -96,6 +96,9 @@ type
     Image5: TImage;
     Label30: TLabel;
     Image6: TImage;
+    Label31: TLabel;
+    Image7: TImage;
+    Label32: TLabel;
     procedure Image1Click(Sender: TObject);
     procedure DBGProdutoCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
@@ -109,6 +112,7 @@ type
       Shift: TShiftState);
     procedure DBGProdutoTitleClick(Column: TColumn);
     procedure Image6Click(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
   private
     FNodeInfProd: IXMLNode;
     FTOTAL_ICMSTOT_Doc : TTOTAL_ICMSTOT_Doc;
@@ -147,11 +151,15 @@ begin
     XMLDocument1.LoadFromFile(OpenDialog1.FileName);
 
     PreencherTotICMS;
-    acharTotTrib;
     PreencherDBGProd;
-
+    acharTotTrib;
   except on E: Exception do
-    ShowMessage('Estrutura incorreta do XML, Verifique os cadastros!');
+    ShowMessage('Estrutura do XML. Verifique as Tributações nos Cadastros : ' +#13+#13+
+                '- Cadastro de Produto > Dados Fiscais;'+#13+
+                '- Operação;'+#13+
+                '- Cálculo de ICMS;'+#13+
+                '- Fornecedor/Destinatário.'#13+#13+
+                'OBS.: Verifique a Tag <vTotTrib> no XML! ');
   end;
 end;
 
@@ -189,19 +197,30 @@ begin
 
     lNodeImp := lNodeDet.ChildNodes.FindNode('imposto');
 
-    if lNodeImp.ChildNodes.FindNode('vTotTrib').NodeValue = null then
+    if lNodeDet.ChildNodes.FindNode('imposto').ChildValues['vTotTrib'] = null then
     begin
-      ShowMessage('Produto não está tributado. Verifique o cadastro');
-      cdsProduto.Post;
-      lNodeDet := lNodeDet.NextSibling;
+       ShowMessage('Produto sem Tributação ou ISENTO!');
+       cdsProdutovTotTrib.AsFloat := 0;
+       lNodeDet := lNodeDet.NextSibling;
+       cdsProduto.Post;
+    end
+
+    else if lNodeImp.ChildNodes.FindNode('vTotTrib').Text = '' then
+    begin
+        ShowMessage('Produto sem Tributação ou ISENTO!');
+        cdsProdutovTotTrib.AsFloat := 0;
+        lNodeDet := lNodeDet.NextSibling;
+        cdsProduto.Post;
     end
       else
       begin
+        cdsProdutoTagICMS.AsString  := lNodeDet.ChildNodes.FindNode('imposto').XML;
+        lNodeImp := lNodeDet.ChildNodes.FindNode('imposto');
         cdsProdutovTotTrib.AsFloat := lNodeImp.ChildNodes.FindNode('vTotTrib').NodeValue/100;
+        lNodeDet := lNodeDet.NextSibling;
+        cdsProduto.Post;
       end;
 
-    cdsProduto.Post;
-    lNodeDet := lNodeDet.NextSibling;
   end;
   INodeChave := XMLDocument1.ChildNodes.FindNode('NFe').ChildNodes.FindNode('infNFe').AttributeNodes['Id'].Text;
   self.edtChave.Text := INodeChave;
@@ -236,6 +255,26 @@ begin
   self.edtvNF.Text := FTOTAL_ICMSTOT_Doc.TVNF;
   self.edtvTotTribF.Text := FTOTAL_ICMSTOT_Doc.TVTotTrib;
 end;
+
+{procedure TfrmNF_Documento.acharTotTrib;
+var somar : Double;
+begin
+inherited;
+  somar := 0;
+  with cdsProduto do
+  begin
+    cdsProduto.DisableControls;
+    cdsProduto.First;
+
+    while not cdsProduto.Eof do
+    begin
+      somar := (somar + cdsProduto.FieldByName('vTotTrib').AsFloat);
+      cdsProduto.Next;
+    end;
+    cdsProduto.EnableControls;
+    self.edtvTotTrib.Text := FloatToStr(somar);
+  end;
+end;}
 
 procedure TfrmNF_Documento.acharTotTrib;
 var somar : Double;
@@ -290,6 +329,15 @@ procedure TfrmNF_Documento.Image6Click(Sender: TObject);
 begin
   try
     ShellExecute(Handle, 'open', 'https://www.sefaz.rs.gov.br/NFE/NFE-VAL.aspx', '', nil,0);
+  except on E: Exception do
+    ShowMessage('Não foi possível acessar o Site da SEFAZ');
+  end;
+end;
+
+procedure TfrmNF_Documento.Image7Click(Sender: TObject);
+begin
+  try
+    ShellExecute(Handle, 'open', 'iexplore.exe', 'http://www.sintegra.gov.br', nil,0);
   except on E: Exception do
     ShowMessage('Não foi possível acessar o Site da SEFAZ');
   end;
