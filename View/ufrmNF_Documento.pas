@@ -330,7 +330,7 @@ begin
   try
     ShellExecute(Handle, 'open', 'https://www.sefaz.rs.gov.br/NFE/NFE-VAL.aspx', '', nil,0);
   except on E: Exception do
-    ShowMessage('Não foi possível acessar o Site da SEFAZ');
+    ShowMessage('Não foi possível acessar o Site da SEFAZ RS');
   end;
 end;
 
@@ -339,7 +339,7 @@ begin
   try
     ShellExecute(Handle, 'open', 'iexplore.exe', 'http://www.sintegra.gov.br', nil,0);
   except on E: Exception do
-    ShowMessage('Não foi possível acessar o Site da SEFAZ');
+    ShowMessage('Não foi possível acessar o Site do SINTEGRA');
   end;
 end;
 

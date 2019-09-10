@@ -687,7 +687,7 @@ object frmNF_Documento: TfrmNF_Documento
       Left = 5
       Top = 62
       Width = 931
-      Height = 288
+      Height = 283
       DataSource = dsProduto
       ReadOnly = True
       TabOrder = 0
